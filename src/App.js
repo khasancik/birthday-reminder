@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import List from './components/List';
+import data from './data';
 import './App.css';
 
 function App() {
+  const [ people, setPeople ] = useState(data);
+
+  const deletePeople = () =>{
+    // console.log(1);
+    setPeople([]);
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section className='container'>
+        <h3>{people.length} birthdays today</h3>
+      <List people = {people} />
+      <button onClick={deletePeople}>clear all</button>
+      </section>
+    </main>
   );
 }
 
 export default App;
+
+
+// props bu App.js dan List.jsx ga junatiladigan malumot.
